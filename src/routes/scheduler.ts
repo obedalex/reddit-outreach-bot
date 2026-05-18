@@ -3,7 +3,16 @@ import { reddit, redis } from '@devvit/web/server';
 
 export const scheduler = new Hono();
 
-const SUBREDDITS = ['all', 'forhire', 'freelance', 'webdev'];
+const SUBREDDITS = [
+  'all',
+  'forhire',
+  'freelance',
+  'webdev',
+  'webdesign',
+  'Entrepreneur',
+  'NoStupidQuestions',
+  'website',
+];
 
 const SEARCH_TERMS = [
   'need website',
@@ -30,7 +39,6 @@ export async function runGigCheck() {
   activeSubs = Array.from(new Set(activeSubs));
 
   for (const subreddit of activeSubs) {
-
     try {
       console.log(`Scanning r/${subreddit}...`);
 
