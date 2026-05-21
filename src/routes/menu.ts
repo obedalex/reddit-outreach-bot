@@ -14,10 +14,11 @@ menu.post('/trigger-gigs', async (c) => {
       },
       200
     );
-  } catch (err: any) {
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
     return c.json<UiResponse>(
       {
-        showToast: '❌ Failed to trigger gig check: ' + err.message,
+        showToast: '❌ Failed to trigger gig check: ' + message,
       },
       200
     );
